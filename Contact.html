@@ -5,80 +5,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact – Protech Consult AB</title>
   <style>
-    body{
-      margin:0;
-      background:#bcbcbc;
-      font-family:"Times New Roman",serif;
-      color:#111;
-    }
-    .app{
-      max-width:980px;
-      margin:14px auto;
-      background:#d4d0c8;
-      border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
-    }
-    .titlebar{
-      display:flex;justify-content:space-between;align-items:center;
-      background:#003b8f;color:#05e0ff;
-      padding:6px 8px;font-size:30px;font-weight:700;
-      border-bottom:2px solid #001f4d;
-    }
-    .controls{display:flex;gap:6px;}
-    .ctrl{
-      width:18px;height:18px;background:#d9d9d9;
-      border:1px solid #000;
-      box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff;
-    }
-    .content{
-      display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px;
-    }
-    .sidebar{
-      background:#cfcfcf;
-      border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
-      padding:12px;min-height:400px;
-    }
-    .nav{display:flex;flex-direction:column;gap:12px;margin-top:12px;}
-    .nav a{
-      font-size:26px;text-decoration:none;color:#003b8f;
-      background:#d8d8d8;padding:6px 10px;
-      border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
-      text-align:center;
-    }
-    .nav a.active{
-      color:#00bcd4;background:#2f4f6f;
-      box-shadow:inset -2px -2px 0 #001a2f,inset 2px 2px 0 #85a3c2;
-    }
-    .main{
-      background:#ddd;
-      border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
-      padding:24px;
-    }
-    h1{font-size:28px;margin-top:0;}
-    p{font-size:22px;line-height:1.4;}
-    .contact-card{font-size:22px;line-height:1.6;margin-top:20px;}
-    .contact-card a{color:#003b8f;text-decoration:none;}
-    .footer{
-      height:22px;background:#bdbdbd;
-      border-top:2px solid #fff;border-bottom:2px solid #000;
-      margin-top:10px;
-    }
+    body{margin:0;background:#bcbcbc;font-family:"Times New Roman",Georgia,serif;color:#111}
+    .app{max-width:980px;margin:14px auto;background:#d4d0c8;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff}
+    .titlebar{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:#003b8f;color:#05e0ff;font-weight:700;letter-spacing:.5px;font-size:30px;border-bottom:2px solid #001f4d}
+    .controls{display:flex;gap:6px}.ctrl{width:18px;height:18px;background:#d9d9d9;border:1px solid #000;box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff}
+    .content{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px}
+    .sidebar{background:#cfcfcf;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:12px;min-height:400px}
+    .nav{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .nav a{font-size:26px;text-decoration:none;color:#003b8f;background:#d8d8d8;padding:6px 10px;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;text-align:center}
+    .nav a.active{color:#00bcd4;background:#2f4f6f;box-shadow:inset -2px -2px 0 #001a2f,inset 2px 2px 0 #85a3c2}
+    .main{background:#ddd;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:24px}
+    h1{font-size:28px;margin-top:0}
+    .contact-card{font-size:22px;line-height:1.6;margin-top:10px}
+    .contact-card a{color:#003b8f;text-decoration:none}
+    .footer{height:22px;background:#bdbdbd;border-top:2px solid #fff;border-bottom:2px solid #000;margin-top:10px}
   </style>
 </head>
 <body>
   <div class="app">
     <div class="titlebar">
       <div>PROTECH CONSULT AB</div>
-      <div class="controls">
-        <div class="ctrl"></div><div class="ctrl"></div><div class="ctrl"></div>
-      </div>
+      <div class="controls"><div class="ctrl"></div><div class="ctrl"></div><div class="ctrl"></div></div>
     </div>
 
     <div class="content">
-      <!-- Sidebar -->
       <aside class="sidebar">
         <nav class="nav">
           <a href="index.html">Home</a>
@@ -87,7 +37,6 @@
         </nav>
       </aside>
 
-      <!-- Main -->
       <main class="main">
         <h1>Kontakt</h1>
         <div class="contact-card">
