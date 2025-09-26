@@ -5,216 +5,47 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Protech Consult AB</title>
   <style>
-    :root{
-      --win95-bg:#c0c0c0;
-      --win95-panel:#d4d0c8;
-      --win95-dark:#404040;
-      --win95-mid:#808080;
-      --win95-light:#ffffff;
-      --brand-blue:#003a9c;
-      --brand-cyan:#05e0ff;
-      --button-bg:#e5e2db;
-      --button-text:#222;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:#bcbcbc;
-      font-family: "Times New Roman", Georgia, Cambria, serif;
-      color:#111;
-    }
-
-    /* Window frame */
-    .app{
-      max-width:980px;
-      margin:14px auto;
-      background:var(--win95-panel);
-      border:2px solid var(--win95-dark);
-      box-shadow:
-        inset -2px -2px 0 0 var(--win95-dark),
-        inset 2px 2px 0 0 var(--win95-light);
-    }
-
-    /* Title bar */
-    .titlebar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:6px 8px;
-      background:#003b8f; /* deep blue */
-      color:var(--brand-cyan);
-      font-weight:700;
-      letter-spacing:1px;
-      font-size:34px;
-      line-height:1;
-      text-shadow:0 1px 0 #001a44,0 0 4px #0af;
-      border-bottom:2px solid #001f4d;
-    }
-    .controls{
-      display:flex; gap:6px;
-    }
-    .ctrl{
-      width:18px; height:18px; background:#d9d9d9;
-      border:1px solid #000; box-shadow:inset -1px -1px 0 #000, inset 1px 1px 0 #fff;
-      position:relative;
-    }
-    .ctrl.min::before{content:"";position:absolute;left:3px;right:3px;bottom:3px;height:2px;background:#000}
-    .ctrl.max::before,.ctrl.max::after{
-      content:"";position:absolute;left:3px;right:3px;height:2px;background:#000;
-    }
-    .ctrl.max::before{top:3px}
-    .ctrl.max::after{bottom:3px}
-    .ctrl.close::before,.ctrl.close::after{
-      content:"";position:absolute;left:4px;right:4px;top:4px;height:2px;background:#000;transform:rotate(45deg);
-    }
-    .ctrl.close::after{transform:rotate(-45deg)}
-
-    /* Layout */
-    .content{
-      display:grid;
-      grid-template-columns:220px 1fr;
-      gap:12px;
-      padding:12px;
-    }
-    .sidebar{
-      background:#cfcfcf;
-      border:2px solid var(--win95-dark);
-      box-shadow:inset -2px -2px 0 var(--win95-dark), inset 2px 2px 0 var(--win95-light);
-      padding:12px;
-      min-height:520px;
-    }
-    .folder{
-      width:64px; height:48px; margin-bottom:12px;
-      background:linear-gradient(#fff7a5,#ffd560);
-      border:2px solid #333; box-shadow:inset 2px 2px 0 #fff;
-      position:relative; border-radius:2px;
-    }
-    .folder::before{
-      content:""; position:absolute; left:6px; top:-10px; width:28px; height:14px;
-      background:linear-gradient(#fff7a5,#ffd560); border:2px solid #333; border-bottom:none; border-radius:2px 2px 0 0;
-    }
-    .nav{display:flex; flex-direction:column; gap:12px; margin-top:2px;}
-    .nav a{
-      font-family: "Times New Roman", serif;
-      font-size:26px;
-      text-decoration:none;
-      color:#003b8f;
-      background:#d8d8d8;
-      padding:6px 10px;
-      border:2px solid var(--win95-dark);
-      box-shadow: inset -2px -2px 0 var(--win95-dark), inset 2px 2px 0 var(--win95-light);
-      display:inline-block;
-      min-width:140px;
-      text-align:center;
-    }
-    .nav a:hover{filter:brightness(0.95)}
-    .nav a.active{
-      color:#00bcd4;
-      background:#2f4f6f;
-      box-shadow: inset -2px -2px 0 #001a2f, inset 2px 2px 0 #85a3c2;
-    }
-
-    .main{
-      background:#ddd;
-      border:2px solid var(--win95-dark);
-      box-shadow:inset -2px -2px 0 var(--win95-dark), inset 2px 2px 0 var(--win95-light);
-      padding:18px 18px 24px;
-      position:relative;
-    }
-
-    /* Globe */
-    .globe{
-      position:absolute; right:18px; top:12px; width:90px; height:90px;
-      border:2px solid #222; border-radius:50%; background:#29c9ff;
-      box-shadow:inset 0 0 0 4px #0c9fd8;
-    }
-    .globe svg{width:100%; height:100%; display:block}
-
-    .welcome h1{
-      font-size:28px; margin:0 110px 10px 0; font-weight:700;
-    }
-    .welcome p{
-      font-size:22px; margin:0 110px 18px 0; line-height:1.3;
-    }
-
-    /* Service buttons */
-    .services{display:flex; flex-direction:column; gap:16px; margin-top:8px;}
-    .svc{
-      display:grid; grid-template-columns:74px 1fr; align-items:center;
-      background:#e7e4dc;
-      border:2px solid #000;
-      box-shadow: inset -3px -3px 0 var(--win95-dark), inset 3px 3px 0 var(--win95-light);
-      min-height:72px;
-    }
-    .svc+.svc{margin-top:6px}
-    .iconwrap{
-      display:flex; align-items:center; justify-content:center;
-      height:74px; width:74px; margin:6px;
-      background:#02b8cf; border:3px solid #004a57; box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
-    }
-    .svc h2{
-      margin:0 12px; font-size:40px; font-weight:700; color:#111; font-family:"Times New Roman", serif;
-    }
-    .svc:active{transform:translateY(1px)}
-    .svc a{display:contents; text-decoration:none; color:inherit}
-
-    /* Footer bar */
-    .footer{
-      height:22px; background:#bdbdbd; border-top:2px solid #fff; border-bottom:2px solid #000; margin-top:10px;
-    }
-
-    /* Small screens */
-    @media (max-width:840px){
-      .content{grid-template-columns:1fr}
-      .welcome h1,.welcome p{margin-right:0}
-      .globe{position:static; margin:0 0 10px auto}
-      .titlebar{font-size:26px}
-      .svc h2{font-size:30px}
-      .nav a{font-size:22px}
-    }
-
-    /* Inline icon SVGs common look */
-    .iconwrap svg{width:46px; height:46px}
+    body{margin:0;background:#bcbcbc;font-family:"Times New Roman",Georgia,serif;color:#111}
+    .app{max-width:980px;margin:14px auto;background:#d4d0c8;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff}
+    .titlebar{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:#003b8f;color:#05e0ff;font-weight:700;letter-spacing:.5px;font-size:30px;border-bottom:2px solid #001f4d}
+    .controls{display:flex;gap:6px}.ctrl{width:18px;height:18px;background:#d9d9d9;border:1px solid #000;box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff}
+    .content{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px}
+    .sidebar{background:#cfcfcf;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:12px;min-height:520px}
+    .nav{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .nav a{font-size:26px;text-decoration:none;color:#003b8f;background:#d8d8d8;padding:6px 10px;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;text-align:center}
+    .nav a.active{color:#00bcd4;background:#2f4f6f;box-shadow:inset -2px -2px 0 #001a2f,inset 2px 2px 0 #85a3c2}
+    .main{background:#ddd;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:18px 18px 24px;position:relative}
+    .globe{position:absolute; right:18px; top:12px; width:90px; height:90px;border:2px solid #222;border-radius:50%;background:#29c9ff;box-shadow:inset 0 0 0 4px #0c9fd8}
+    .globe svg{width:100%;height:100%;display:block}
+    .welcome h1{font-size:28px;margin:0 110px 10px 0;font-weight:700}
+    .welcome p{font-size:22px;margin:0 110px 18px 0;line-height:1.3}
+    .services{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+    .svc{display:grid;grid-template-columns:74px 1fr;align-items:center;background:#e7e4dc;border:2px solid #000;box-shadow:inset -3px -3px 0 #404040,inset 3px 3px 0 #fff;min-height:72px}
+    .iconwrap{display:flex;align-items:center;justify-content:center;height:74px;width:74px;margin:6px;background:#02b8cf;border:3px solid #004a57;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+    .svc h2{margin:0 12px;font-size:40px;font-weight:700;color:#111}
+    .footer{height:22px;background:#bdbdbd;border-top:2px solid #fff;border-bottom:2px solid #000;margin-top:10px}
+    @media(max-width:840px){.content{grid-template-columns:1fr}.globe{position:static;margin:0 0 10px auto}.titlebar{font-size:26px}.svc h2{font-size:30px}.nav a{font-size:22px}.welcome h1,.welcome p{margin-right:0}}
   </style>
 </head>
 <body>
-  <div class="app" role="application" aria-label="Protech Consult AB, retro fönster">
+  <div class="app">
     <div class="titlebar">
       <div>PROTECH CONSULT AB</div>
-      <div class="controls" aria-label="Fönsterkontroller">
-        <div class="ctrl min" title="Minimera"></div>
-        <div class="ctrl max" title="Maximera"></div>
-        <div class="ctrl close" title="Stäng"></div>
-      </div>
+      <div class="controls"><div class="ctrl"></div><div class="ctrl"></div><div class="ctrl"></div></div>
     </div>
 
     <div class="content">
-      <!-- Sidebar -->
-      <aside class="sidebar" aria-label="Sidomeny">
-        <div class="folder" aria-hidden="true"></div>
-<nav class="nav">
-  <a href="index.html" class="active">Home</a>
-  <a href="About.html">About</a>
-  <a href="Contact.html">Contact</a>
-</nav>
+      <aside class="sidebar">
+        <nav class="nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="About.html">About</a>
+          <a href="Contact.html">Contact</a>
+        </nav>
       </aside>
 
-      <!-- Main -->
       <main class="main">
         <div class="globe" aria-hidden="true">
-          <!-- Simple globe SVG -->
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <clipPath id="c"><circle cx="50" cy="50" r="48"/></clipPath>
-            </defs>
-            <circle cx="50" cy="50" r="48" fill="#22c1ff" stroke="#082b3a" stroke-width="3"/>
-            <g clip-path="url(#c)">
-              <path d="M-10 60 Q 20 40 55 55 T 120 60" fill="none" stroke="#0a7" stroke-width="8"/>
-              <path d="M 0 20 Q 30 30 40 15 T 110 20" fill="none" stroke="#0a7" stroke-width="8"/>
-              <path d="M-10 85 Q 45 80 70 95 T 120 90" fill="none" stroke="#0a7" stroke-width="8"/>
-            </g>
-          </svg>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="c"><circle cx="50" cy="50" r="48"/></clipPath></defs><circle cx="50" cy="50" r="48" fill="#22c1ff" stroke="#082b3a" stroke-width="3"/><g clip-path="url(#c)"><path d="M-10 60 Q 20 40 55 55 T 120 60" fill="none" stroke="#0a7" stroke-width="8"/><path d="M 0 20 Q 30 30 40 15 T 110 20" fill="none" stroke="#0a7" stroke-width="8"/><path d="M-10 85 Q 45 80 70 95 T 120 90" fill="none" stroke="#0a7" stroke-width="8"/></g></svg>
         </div>
 
         <section class="welcome">
@@ -223,93 +54,38 @@
         </section>
 
         <section class="services" aria-label="Tjänster">
-          <!-- Vibrationsmätning -->
           <div class="svc">
-            <div class="iconwrap" aria-hidden="true">
-              <!-- Oscilloscope/waveform -->
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="6" width="52" height="52" fill="#3fe8ff" opacity=".2"/>
-                <g stroke="#003a9c" stroke-width="1">
-                  <path d="M6 14 H58 M6 22 H58 M6 30 H58 M6 38 H58 M6 46 H58 M6 54 H58" />
-                </g>
-                <path d="M8 34 L16 30 L22 40 L27 16 L33 48 L38 30 L44 36 L56 28"
-                      fill="none" stroke="#ffe600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+            <div class="iconwrap">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="52" height="52" fill="#3fe8ff" opacity=".2"/><g stroke="#003a9c" stroke-width="1"><path d="M6 14 H58 M6 22 H58 M6 30 H58 M6 38 H58 M6 46 H58 M6 54 H58"/></g><path d="M8 34 L16 30 L22 40 L27 16 L33 48 L38 30 L44 36 L56 28" fill="none" stroke="#ffe600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <a href="#vibrationer" aria-label="Läs mer om Vibrationsmätning">
-              <h2>Vibrationsmätning</h2>
-            </a>
+            <h2>Vibrationsmätning</h2>
           </div>
 
-          <!-- Bullermätning -->
           <div class="svc">
-            <div class="iconwrap" aria-hidden="true">
-              <!-- Speaker -->
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <rect width="64" height="64" fill="none"/>
-                <path d="M8 40 V24 H18 L34 12 V52 L18 40 Z" fill="#ff2d2d" stroke="#202020" stroke-width="2"/>
-                <path d="M40 24 q8 8 0 16" fill="none" stroke="#0066cc" stroke-width="4"/>
-                <path d="M46 20 q14 14 0 28" fill="none" stroke="#00b3ff" stroke-width="4" opacity=".85"/>
-              </svg>
+            <div class="iconwrap">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" fill="none"/><path d="M8 40 V24 H18 L34 12 V52 L18 40 Z" fill="#ff2d2d" stroke="#202020" stroke-width="2"/><path d="M40 24 q8 8 0 16" fill="none" stroke="#0066cc" stroke-width="4"/><path d="M46 20 q14 14 0 28" fill="none" stroke="#00b3ff" stroke-width="4" opacity=".85"/></svg>
             </div>
-            <a href="#buller" aria-label="Läs mer om Bullermätning">
-              <h2>Bullermätning</h2>
-            </a>
+            <h2>Bullermätning</h2>
           </div>
 
-          <!-- Syneförrättning -->
           <div class="svc">
-            <div class="iconwrap" aria-hidden="true">
-              <!-- Clipboard -->
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <rect x="12" y="10" width="40" height="46" rx="2" fill="#fff" stroke="#1b1b1b" stroke-width="2"/>
-                <rect x="22" y="6" width="20" height="10" rx="2" fill="#d7d7d7" stroke="#1b1b1b" stroke-width="2"/>
-                <circle cx="28" cy="11" r="2" fill="#7a7a7a"/>
-                <path d="M20 22 H44 M20 30 H44 M20 38 H44" stroke="#3a3a3a" stroke-width="2"/>
-                <path d="M20 46 h10" stroke="#f04b3a" stroke-width="3"/>
-                <path d="M34 46 h10" stroke="#2e9b2e" stroke-width="3"/>
-              </svg>
+            <div class="iconwrap">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="10" width="40" height="46" rx="2" fill="#fff" stroke="#1b1b1b" stroke-width="2"/><rect x="22" y="6" width="20" height="10" rx="2" fill="#d7d7d7" stroke="#1b1b1b" stroke-width="2"/><circle cx="28" cy="11" r="2" fill="#7a7a7a"/><path d="M20 22 H44 M20 30 H44 M20 38 H44" stroke="#3a3a3a" stroke-width="2"/><path d="M20 46 h10" stroke="#f04b3a" stroke-width="3"/><path d="M34 46 h10" stroke="#2e9b2e" stroke-width="3"/></svg>
             </div>
-            <a href="#syneforrattning" aria-label="Läs mer om Syneförrättning">
-              <h2>Syneförrättning</h2>
-            </a>
+            <h2>Syneförrättning</h2>
           </div>
 
-          <!-- Riskanalys -->
           <div class="svc">
-            <div class="iconwrap" aria-hidden="true">
-              <!-- Warning triangle -->
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <path d="M32 6 L60 54 H4 Z" fill="#ffe000" stroke="#1b1b1b" stroke-width="3"/>
-                <rect x="29.5" y="22" width="5" height="16" fill="#1b1b1b"/>
-                <rect x="29.5" y="42" width="5" height="5" fill="#1b1b1b"/>
-              </svg>
+            <div class="iconwrap">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 6 L60 54 H4 Z" fill="#ffe000" stroke="#1b1b1b" stroke-width="3"/><rect x="29.5" y="22" width="5" height="16" fill="#1b1b1b"/><rect x="29.5" y="42" width="5" height="5" fill="#1b1b1b"/></svg>
             </div>
-            <a href="#riskanalys" aria-label="Läs mer om Riskanalys">
-              <h2>Riskanalys</h2>
-            </a>
+            <h2>Riskanalys</h2>
           </div>
         </section>
       </main>
     </div>
 
-    <div class="footer" aria-hidden="true"></div>
+    <div class="footer"></div>
   </div>
-
-  <!-- (Valfritt) Enkel “hash routing” för About/Contact-innehåll -->
-  <script>
-    // Minimal script för att markera aktiv länk vid hash-navigering
-    (function(){
-      const links = document.querySelectorAll('.nav a');
-      function setActive(){
-        links.forEach(a=>{
-          if((location.hash || '#') === a.getAttribute('href')) a.classList.add('active');
-          else a.classList.remove('active');
-        });
-      }
-      window.addEventListener('hashchange', setActive);
-      setActive();
-    })();
-  </script>
 </body>
 </html>
