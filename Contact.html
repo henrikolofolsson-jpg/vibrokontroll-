@@ -3,28 +3,69 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About – Protech Consult AB</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Contact – Protech Consult AB</title>
   <style>
-    body{margin:0;background:#bcbcbc;font-family:"Times New Roman",serif;}
-    .app{max-width:980px;margin:14px auto;background:#d4d0c8;border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;}
-    .titlebar{display:flex;justify-content:space-between;align-items:center;
-      background:#003b8f;color:#05e0ff;padding:6px 8px;font-size:30px;font-weight:700;}
+    body{
+      margin:0;
+      background:#bcbcbc;
+      font-family:"Times New Roman",serif;
+      color:#111;
+    }
+    .app{
+      max-width:980px;
+      margin:14px auto;
+      background:#d4d0c8;
+      border:2px solid #404040;
+      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
+    }
+    .titlebar{
+      display:flex;justify-content:space-between;align-items:center;
+      background:#003b8f;color:#05e0ff;
+      padding:6px 8px;font-size:30px;font-weight:700;
+      border-bottom:2px solid #001f4d;
+    }
     .controls{display:flex;gap:6px;}
-    .ctrl{width:18px;height:18px;background:#d9d9d9;border:1px solid #000;
-      box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff;}
-    .content{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px;}
-    .sidebar{background:#cfcfcf;border:2px solid #404040;
-      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:12px;min-height:400px;}
+    .ctrl{
+      width:18px;height:18px;background:#d9d9d9;
+      border:1px solid #000;
+      box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff;
+    }
+    .content{
+      display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px;
+    }
+    .sidebar{
+      background:#cfcfcf;
+      border:2px solid #404040;
+      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
+      padding:12px;min-height:400px;
+    }
     .nav{display:flex;flex-direction:column;gap:12px;margin-top:12px;}
-    .nav a{font-size:26px;text-decoration:none;color:#003b8f;background:#d8d8d8;
-      padding:6px 10px;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;text-align:center;}
-    .nav a.active{color:#00bcd4;background:#2f4f6f;}
-    .main{background:#ddd;border:2px solid #404040;box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;padding:24px;}
+    .nav a{
+      font-size:26px;text-decoration:none;color:#003b8f;
+      background:#d8d8d8;padding:6px 10px;
+      border:2px solid #404040;
+      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
+      text-align:center;
+    }
+    .nav a.active{
+      color:#00bcd4;background:#2f4f6f;
+      box-shadow:inset -2px -2px 0 #001a2f,inset 2px 2px 0 #85a3c2;
+    }
+    .main{
+      background:#ddd;
+      border:2px solid #404040;
+      box-shadow:inset -2px -2px 0 #404040,inset 2px 2px 0 #fff;
+      padding:24px;
+    }
     h1{font-size:28px;margin-top:0;}
-    p{font-size:22px;line-height:1.4;max-width:700px;}
-    .footer{height:22px;background:#bdbdbd;border-top:2px solid #fff;border-bottom:2px solid #000;margin-top:10px;}
+    p{font-size:22px;line-height:1.4;}
+    .contact-card{font-size:22px;line-height:1.6;margin-top:20px;}
+    .contact-card a{color:#003b8f;text-decoration:none;}
+    .footer{
+      height:22px;background:#bdbdbd;
+      border-top:2px solid #fff;border-bottom:2px solid #000;
+      margin-top:10px;
+    }
   </style>
 </head>
 <body>
@@ -35,19 +76,28 @@
         <div class="ctrl"></div><div class="ctrl"></div><div class="ctrl"></div>
       </div>
     </div>
+
     <div class="content">
+      <!-- Sidebar -->
       <aside class="sidebar">
         <nav class="nav">
-  <a href="index.html" class="active">Home</a>
-  <a href="About.html">About</a>
-  <a href="Contact.html">Contact</a>
-</nav>
+          <a href="index.html">Home</a>
+          <a href="About.html">About</a>
+          <a href="Contact.html" class="active">Contact</a>
+        </nav>
       </aside>
+
+      <!-- Main -->
       <main class="main">
-        <h1>Om Protech Consult</h1>
-        <p>Protech Consult finns i Norge under Protech Consult AS och sedan 2023 i Sverige. Vi arbetar med projekt i hela Sverige, framförallt åt företag.</p>
+        <h1>Kontakt</h1>
+        <div class="contact-card">
+          <p><strong>Henrik</strong></p>
+          <p>E-post: <a href="mailto:Henrik.olof.olsson@protechconsult.se">Henrik.olof.olsson@protechconsult.se</a></p>
+          <p>Telefon: <a href="tel:+46708855579">070-88 555 79</a></p>
+        </div>
       </main>
     </div>
+
     <div class="footer"></div>
   </div>
 </body>
