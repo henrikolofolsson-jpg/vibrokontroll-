@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibrationsmätning – ProTech Consult AB</title>
+  <meta name="description" content="Triax & vertikal vibrationsmätning med SMS/mejl-larm och tydliga rapporter enligt Svensk Standard & AMA." />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="manifest" href="../assets/site.webmanifest">
+  <meta name="theme-color" content="#0b1020">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vibrationsmätning – ProTech Consult AB">
+  <meta property="og:description" content="Vertikal & triax – larm i realtid och tydliga rapporter.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/bild3.jpg">
+
+  <link rel="stylesheet" href="../style.css" />
+  <script>function toggleNav(){document.querySelector('.nav').classList.toggle('open')}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../">ProTech Consult AB<small>Vibrationskontroll & omgivningspåverkan</small></a>
+    <button class="nav-toggle" aria-label="Meny" onclick="toggleNav()"></button>
+    <nav class="nav" aria-label="Primär">
+      <a href="../">Start</a>
+      <a href="riskanalys.html">Riskanalys</a>
+      <a href="bullermatning.html">Bullermätning</a>
+      <a href="vibrationsmatning.html" class="active">Vibrationsmätning</a>
+      <a href="sprickbesiktning.html">Sprickbesiktning</a>
+      <a href="../#kontakt" class="btn btn-primary">Kontakta oss</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero" style="--hero:url('../assets/bild3.jpg')">
+  <div class="hero-inner container">
+    <h1 class="h1">Vibrationsmätning</h1>
+    <p class="lead">Vertikal & triax – larm i realtid och tydliga rapporter.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <article class="prose">
+      <h2>Innehåll</h2>
+      <ul class="check">
+        <li>Triax & vertikal (PPV/VDV)</li>
+        <li>SMS-/mejl-larm vid nivåer</li>
+        <li>Dagliga/veckorapporter per mätare</li>
+        <li>Placering enligt Svensk Standard & AMA</li>
+      </ul>
+
+      <h2>Snabb etablering</h2>
+      <p>Vi installerar, testar larmnivåer och övervakar – du får beslutsunderlag i tid.</p>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="../#kontakt">Begär offert</a>
+        <a class="btn btn-ghost" href="../">Till startsidan</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img class="footer-logo" src="../assets/logo.png" alt="ProTech Consult AB">
+    <div>© 2025 ProTech Consult AB</div>
+  </div>
+</footer>
+</body>
+</html>
