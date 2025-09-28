@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sprickbesiktning – ProTech Consult AB</title>
+  <meta name="description" content="För- och efterbesiktning enligt Svensk Standard. Fotodokumentation, protokoll och samordning med sotare vid behov." />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="manifest" href="../assets/site.webmanifest">
+  <meta name="theme-color" content="#0b1020">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sprickbesiktning – ProTech Consult AB">
+  <meta property="og:description" content="För- och efterbesiktning med fotodokumentation och spårbara protokoll.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/bild11.jpg">
+
+  <link rel="stylesheet" href="../style.css" />
+  <script>function toggleNav(){document.querySelector('.nav').classList.toggle('open')}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../">ProTech Consult AB<small>Vibrationskontroll & omgivningspåverkan</small></a>
+    <button class="nav-toggle" aria-label="Meny" onclick="toggleNav()"></button>
+    <nav class="nav" aria-label="Primär">
+      <a href="../">Start</a>
+      <a href="riskanalys.html">Riskanalys</a>
+      <a href="bullermatning.html">Bullermätning</a>
+      <a href="vibrationsmatning.html">Vibrationsmätning</a>
+      <a href="sprickbesiktning.html" class="active">Sprickbesiktning</a>
+      <a href="../#kontakt" class="btn btn-primary">Kontakta oss</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero" style="--hero:url('../assets/bild11.jpg')">
+  <div class="hero-inner container">
+    <h1 class="h1">Sprickbesiktning</h1>
+    <p class="lead">För- och efterbesiktning med fotodokumentation och spårbara protokoll.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <article class="prose">
+      <h2>Upplägg</h2>
+      <ul class="check">
+        <li>Förbesiktning före start</li>
+        <li>Uppföljning/efterbesiktning efter avslut</li>
+        <li>Fotodokumentation & tydliga protokoll</li>
+        <li>Samordning med sotare vid behov</li>
+      </ul>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="../#kontakt">Boka besiktning</a>
+        <a class="btn btn-ghost" href="../">Till startsidan</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img class="footer-logo" src="../assets/logo.png" alt="ProTech Consult AB">
+    <div>© 2025 ProTech Consult AB</div>
+  </div>
+</footer>
+</body>
+</html>
