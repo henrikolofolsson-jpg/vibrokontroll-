@@ -1,333 +1,165 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head> <link rel="stylesheet" href="style.css">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-<title>Protech Consult AB</title>
-<style>
-  :root{
-    --bg:#bcbcbc; --panel:#d4d0c8; --dark:#404040; --light:#ffffff;
-    --brand:#003b8f; --brand-cyan:#05e0ff; --accent:#2f4f6f; --card:#e7e4dc;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);font-family:"Times New Roman",Georgia,serif;color:#111}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProTech Consult AB – Omgivningskontroller i hela Sverige</title>
+  <meta name="description" content="Sprickbesiktning, vibrationsmätning, bullermätning och riskanalys. Snabb start, SMS/mejl-larm och tydliga rapporter enligt svensk standard. Vi verkar i hela Sverige." />
+  <link rel="canonical" href="./" />
+  <meta property="og:title" content="ProTech Consult AB – Omgivningskontroller i hela Sverige">
+  <meta property="og:description" content="Sprickbesiktning, vibrationsmätning, buller & riskanalys. Snabb start, SMS-larm, tydliga rapporter.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/bild10.jpg">
 
-  /* APP-RAM – större och med luft */
-  .app{
-    max-width:1200px;             /* bredare så korten inte “ramlar ut” */
-    margin:16px auto;
-    background:var(--panel);
-    border:2px solid var(--dark);
-    box-shadow:inset -2px -2px 0 var(--dark), inset 2px 2px 0 var(--light);
-  }
-  .titlebar{
-    display:flex;justify-content:space-between;align-items:center;gap:8px;
-    padding:12px;background:var(--brand);color:var(--brand-cyan);
-    font-weight:700;letter-spacing:.4px;font-size:clamp(22px,3.2vw,34px);
-    border-bottom:2px solid #001f4d;
-  }
-  .controls{display:flex;gap:6px}
-  .ctrl{width:18px;height:18px;background:#d9d9d9;border:1px solid #000;box-shadow:inset -1px -1px 0 #000,inset 1px 1px 0 #fff}
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <meta name="theme-color" content="#0b1020">
 
-  /* Layout */
-  .content{display:grid;grid-template-columns:260px 1fr;gap:16px;padding:16px}
-  .sidebar{
-    background:#cfcfcf;border:2px solid var(--dark);
-    box-shadow:inset -2px -2px 0 var(--dark), inset 2px 2px 0 var(--light);
-    padding:14px
-  }
-  .nav{display:flex;flex-direction:column;gap:12px}
-  .nav a{
-    display:block;text-decoration:none;text-align:center;
-    padding:12px 14px;font-size:clamp(18px,2.2vw,26px);
-    color:#003b8f;background:#d8d8d8;border:2px solid var(--dark);
-    box-shadow:inset -2px -2px 0 var(--dark), inset 2px 2px 0 var(--light)
-  }
-  .nav a.active{color:#00bcd4;background:var(--accent);
-    box-shadow:inset -2px -2px 0 #001a2f, inset 2px 2px 0 #85a3c2}
-
-  .main{
-    background:#ddd;border:2px solid var(--dark);
-    box-shadow:inset -2px -2px 0 var(--dark), inset 2px 2px 0 var(--light);
-    padding:18px;position:relative;overflow:visible
-  }
-
-  /* Intro */
-  .welcome h1{font-size:clamp(22px,3.5vw,34px);margin:0 0 8px 0}
-  .welcome p{font-size:clamp(17px,2.2vw,20px);margin:0 0 16px 0;line-height:1.45}
-
-  /* Glob – läggs i eget hörn men krockar inte */
-  .globe{position:absolute;right:18px;top:18px;width:min(26vw,130px);height:min(26vw,130px)}
-  .globe svg{width:100%;height:100%;display:block;filter:drop-shadow(0 2px 0 #0a2b4d)}
-  @media (prefers-reduced-motion:no-preference){
-    .globe .spin{animation:spin 15s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-  }
-
-  /* KORT – robust responsiv layout */
-  .services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); /* 1–3 kol beroende på bredd */
-    gap:16px
-  }
-  .svc{
-    display:grid;grid-template-columns:86px 1fr;align-items:center;gap:10px;
-    background:var(--card);border:2px solid #000;cursor:pointer;
-    box-shadow:inset -3px -3px 0 var(--dark), inset 3px 3px 0 #fff;
-    min-height:110px;padding:8px
-  }
-  .svc:active{transform:translateY(1px)}
-  .iconwrap{
-    display:flex;align-items:center;justify-content:center;height:86px;width:86px;
-    background:#02b8cf;border:3px solid #004a57;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)
-  }
-  .svc h2{margin:0;font-size:clamp(22px,2.6vw,40px);font-weight:700;line-height:1.1}
-
-  /* Fakta-ruta */
-  .detail{display:none;background:#d9d6ce;border:2px solid #000;margin-top:14px;
-    box-shadow:inset -3px -3px 0 var(--dark), inset 3px 3px 0 #fff}
-  .detail .bar{display:flex;justify-content:space-between;align-items:center;
-    background:#194b8f;color:#b7f2ff;padding:10px 12px;font-weight:700;border-bottom:2px solid #001f4d}
-  .detail .body{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:14px}
-  .badge{width:120px;height:120px;border:2px solid #222;background:#28c8ff;box-shadow:inset 0 0 0 4px #0c9fd8;
-    display:flex;align-items:center;justify-content:center}
-  .facts{font-size:clamp(16px,2vw,19px);line-height:1.45}
-  .facts ul{margin:6px 0 0 18px}
-  .btn-row{display:flex;gap:10px;justify-content:flex-end;padding:10px}
-  .btn{background:#d8d8d8;border:2px solid #000;box-shadow:inset -2px -2px 0 var(--dark), inset 2px 2px 0 #fff;
-    padding:10px 14px;cursor:pointer;font-size:clamp(16px,2vw,18px)}
-  .btn:active{transform:translateY(1px)}
-
-  /* Smal skärm: sidomeny överst, glob flyttas */
-  @media (max-width:900px){
-    .content{grid-template-columns:1fr}
-    .globe{position:static;margin:0 0 10px auto}
-  }
-</style>
+  <link rel="preload" as="image" href="assets/bild10.jpg">
+  <link rel="stylesheet" href="style.css" />
+  <script>function toggleNav(){document.querySelector('.nav').classList.toggle('open')}</script>
 </head>
 <body>
-  <div class="app">
-    <div class="titlebar">
-      <div>PROTECH CONSULT AB</div>
-      <div class="controls" aria-hidden="true"><div class="ctrl"></div><div class="ctrl"></div><div class="ctrl"></div></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="./">ProTech Consult AB<small>Vibrationskontroll & omgivningspåverkan</small></a>
+    <button class="nav-toggle" aria-label="Meny" onclick="toggleNav()"></button>
+    <nav class="nav" aria-label="Primär">
+      <a href="./">Start</a>
+      <a href="tjanster/riskanalys.html">Riskanalys</a>
+      <a href="tjanster/bullermatning.html">Bullermätning</a>
+      <a href="tjanster/vibrationsmatning.html">Vibrationsmätning</a>
+      <a href="tjanster/sprickbesiktning.html">Sprickbesiktning</a>
+      <a href="#kontakt" class="btn btn-primary">Kontakta oss</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" style="--hero:url('assets/bild10.jpg')">
+  <div class="hero-inner container">
+    <h1 class="h1">Omgivningskontroller – sprickbesiktning, vibration & buller</h1>
+    <p class="lead">Vi levererar mätning, besiktning och riskanalys enligt svensk standard – med SMS/mejl-larm, tydliga rapporter och snabb start i hela Sverige.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#kontakt">Be om offert</a>
+      <a class="btn btn-ghost" href="tjanster/riskanalys.html">Läs mer</a>
     </div>
+    <ul class="check compact" style="justify-content:center;margin-top:16px">
+      <li>Fleraxliga vibrationsmätare</li>
+      <li>SMS/mejl-larm</li>
+      <li>Automatiskt genererade rapporter i PDF</li>
+      <li>Svensk Standard & AMA</li>
+    </ul>
+  </div>
+</section>
 
-    <div class="content">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <nav class="nav" aria-label="Huvudnavigering">
-          <a href="index.html" class="active">Hem</a>
-          <a href="About.html">Om</a>
-          <a href="Contact.html">Kontakt</a>
-        </nav>
-      </aside>
+<!-- Tjänster -->
+<section class="section">
+  <div class="container">
+    <h2 class="h2">Tjänster</h2>
+    <p class="section-intro">Omgivningskontroll från förarbete till uppföljning. Välj tjänst för detaljer.</p>
 
-      <!-- Main -->
-      <main class="main">
-        <!-- 90-tals jordglob -->
-        <div class="globe" aria-hidden="true">
-          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="ocean" cx="50%" cy="40%" r="70%">
-                <stop offset="0%" stop-color="#34d6ff"/>
-                <stop offset="100%" stop-color="#0aa2d8"/>
-              </radialGradient>
-              <clipPath id="clip"><circle cx="80" cy="80" r="70"/></clipPath>
-            </defs>
-            <circle cx="80" cy="80" r="70" fill="url(#ocean)" stroke="#0b3a5c" stroke-width="3"/>
-            <g clip-path="url(#clip)" class="spin">
-              <g stroke="#66e1ff" stroke-opacity=".6" stroke-width="1">
-                <circle cx="80" cy="80" r="56" fill="none"/>
-                <circle cx="80" cy="80" r="42" fill="none"/>
-                <circle cx="80" cy="80" r="28" fill="none"/>
-                <path d="M10 80H150M80 10V150M18 55Q80 75 142 55M18 105Q80 85 142 105" fill="none"/>
-              </g>
-              <g fill="#39c165" stroke="#0b5e2e" stroke-width="2" opacity=".95">
-                <path d="M38,70 C45,50 70,45 82,52 95,60 98,72 86,78 72,85 56,90 44,84 40,82 36,78 38,70Z"/>
-                <path d="M98,92 c10,-6 20,-6 26,2 6,9 0,16 -14,18 -11,2 -18,0 -16,-8 1,-4 2,-8 4,-12Z"/>
-                <path d="M60,108 c8,2 10,6 8,10 -2,4 -8,6 -16,6 -6,0 -10,-2 -10,-6 0,-5 8,-9 18,-10Z"/>
-              </g>
-            </g>
-          </svg>
+    <div class="cards">
+      <!-- Buller -->
+      <article class="card">
+        <img src="assets/bild2.jpg" alt="Bullermätning vid anläggningsarbete" loading="lazy">
+        <div class="card-body">
+          <h3 class="h3">Bullermätning</h3>
+          <p>Kontinuerlig mätning, riktvärdeskontroll och rapportering – med notiser till berörda.</p>
+          <a class="link" href="tjanster/bullermatning.html">Till bullermätning →</a>
         </div>
+      </article>
 
-        <section class="welcome" aria-live="polite">
-          <h1>Välkommen!</h1>
-          <p>Vi levererar vibrationsmätning, bullermätning, syneförrättning (sprickbesiktning) och riskanalys.</p>
-        </section>
+      <!-- Vibration -->
+      <article class="card">
+        <img src="assets/bild3.jpg" alt="Vibrationsmätare med triax-givare" loading="lazy">
+        <div class="card-body">
+          <h3 class="h3">Vibrationsmätning</h3>
+          <p>Triax & vertikal. Trådbundet eller trådlöst, med larm och tydliga rapporter.</p>
+          <a class="link" href="tjanster/vibrationsmatning.html">Till vibrationsmätning →</a>
+        </div>
+      </article>
 
-        <!-- Kort -->
-        <section id="cards" class="services" aria-label="Tjänster">
-          <button class="svc" data-key="vib" aria-controls="detail" aria-expanded="false">
-            <div class="iconwrap" aria-hidden="true">
-              <svg viewBox="0 0 64 64" width="46" height="46">
-                <rect x="6" y="6" width="52" height="52" fill="#3fe8ff" opacity=".25"/>
-                <g stroke="#003a9c" stroke-width="1"><path d="M6 14H58M6 22H58M6 30H58M6 38H58M6 46H58M6 54H58"/></g>
-                <path d="M8 34 L16 30 L22 40 L27 16 L33 48 L38 30 L44 36 L56 28"
-                      fill="none" stroke="#ffe600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div><h2>Vibrationsmätning</h2>
-          </button>
+      <!-- Sprickbesiktning -->
+      <article class="card">
+        <img src="assets/bild11.jpg" alt="Sprickbesiktning på fasad" loading="lazy">
+        <div class="card-body">
+          <h3 class="h3">Sprickbesiktning</h3>
+          <p>För- och efterbesiktning enligt svensk standard, komplett dokumentation.</p>
+          <a class="link" href="tjanster/sprickbesiktning.html">Till sprickbesiktning →</a>
+        </div>
+      </article>
 
-          <button class="svc" data-key="noise" aria-controls="detail" aria-expanded="false">
-            <div class="iconwrap" aria-hidden="true">
-              <svg viewBox="0 0 64 64" width="46" height="46">
-                <path d="M8 40V24H18L34 12V52L18 40Z" fill="#ff2d2d" stroke="#202020" stroke-width="2"/>
-                <path d="M40 24 q8 8 0 16" fill="none" stroke="#0066cc" stroke-width="4"/>
-                <path d="M46 20 q14 14 0 28" fill="none" stroke="#00b3ff" stroke-width="4" opacity=".85"/>
-              </svg>
-            </div><h2>Bullermätning</h2>
-          </button>
-
-          <button class="svc" data-key="survey" aria-controls="detail" aria-expanded="false">
-            <div class="iconwrap" aria-hidden="true">
-              <svg viewBox="0 0 64 64" width="46" height="46">
-                <rect x="12" y="10" width="40" height="46" rx="2" fill="#fff" stroke="#1b1b1b" stroke-width="2"/>
-                <rect x="22" y="6" width="20" height="10" rx="2" fill="#d7d7d7" stroke="#1b1b1b" stroke-width="2"/>
-                <path d="M20 22 H44 M20 30 H44 M20 38 H44" stroke="#3a3a3a" stroke-width="2"/>
-                <path d="M20 46 h10" stroke="#f04b3a" stroke-width="3"/>
-                <path d="M34 46 h10" stroke="#2e9b2e" stroke-width="3"/>
-              </svg>
-            </div><h2>Syneförrättning</h2>
-          </button>
-
-          <button class="svc" data-key="risk" aria-controls="detail" aria-expanded="false">
-            <div class="iconwrap" aria-hidden="true">
-              <svg viewBox="0 0 64 64" width="46" height="46">
-                <path d="M32 6 L60 54 H4 Z" fill="#ffe000" stroke="#1b1b1b" stroke-width="3"/>
-                <rect x="29.5" y="22" width="5" height="16" fill="#1b1b1b"/>
-                <rect x="29.5" y="42" width="5" height="5" fill="#1b1b1b"/>
-              </svg>
-            </div><h2>Riskanalys</h2>
-          </button>
-        </section>
-
-        <!-- Fakta-ruta -->
-        <section id="detail" class="detail" aria-hidden="true">
-          <div class="bar">
-            <span id="detail-title">Detaljer</span>
-            <span aria-hidden="true">▣</span>
-          </div>
-          <div class="body">
-            <div class="badge" id="detail-icon" aria-hidden="true"></div>
-            <div class="facts" id="detail-text">
-              <!-- fylls via JS -->
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="btn" id="backBtn" aria-controls="cards">Tillbaka</button>
-          </div>
-        </section>
-      </main>
+      <!-- Riskanalys -->
+      <article class="card">
+        <img src="assets/bild12.jpg" alt="Riskanalys av projekt" loading="lazy">
+        <div class="card-body">
+          <h3 class="h3">Riskanalys</h3>
+          <p>Ingenjörsframtagna riskanalyser och åtgärdsförslag för säkra och effektiva projekt.</p>
+          <a class="link" href="tjanster/riskanalys.html">Till riskanalys →</a>
+        </div>
+      </article>
     </div>
   </div>
+</section>
 
-<script>
-  // Innehåll för varje tjänst (kortfattat, enligt din specifikation)
-  const DATA = {
-    vib: {
-      title: "Vibrationsmätning",
-      html: `
-        <ul>
-          <li>Vertikal & triax – trådbundna mätare.</li>
-          <li>SMS-funktion vid larm.</li>
-          <li>Priser per mätare och dygn.</li>
-        </ul>`,
-      icon: `
-        <svg viewBox="0 0 64 64" width="90" height="90">
-          <rect x="6" y="6" width="52" height="52" fill="#3fe8ff" opacity=".25"/>
-          <g stroke="#003a9c" stroke-width="1"><path d="M6 14H58M6 22H58M6 30H58M6 38H58M6 46H58M6 54H58"/></g>
-          <path d="M8 34 L16 30 L22 40 L27 16 L33 48 L38 30 L44 36 L56 28"
-                fill="none" stroke="#ffe600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`
-    },
-    noise: {
-      title: "Bullermätning",
-      html: `
-        <ul>
-          <li>Kontinuerliga mätningar – dag/kväll/natt.</li>
-          <li>SMS-notiser vid gränsvärden.</li>
-          <li>Priser per mätare och dygn.</li>
-        </ul>`,
-      icon: `
-        <svg viewBox="0 0 64 64" width="90" height="90">
-          <path d="M8 40V24H18L34 12V52L18 40Z" fill="#ff2d2d" stroke="#202020" stroke-width="2"/>
-          <path d="M40 24 q8 8 0 16" fill="none" stroke="#0066cc" stroke-width="4"/>
-          <path d="M46 20 q14 14 0 28" fill="none" stroke="#00b3ff" stroke-width="4" opacity=".85"/>
-        </svg>`
-    },
-    survey: {
-      title: "Syneförrättning",
-      html: `
-        <ul>
-          <li>Även kallad sprickbesiktning.</li>
-          <li>Utförs enligt svensk standard.</li>
-          <li>Kan utföras tillsammans med sotare vid behov.</li>
-        </ul>`,
-      icon: `
-        <svg viewBox="0 0 64 64" width="90" height="90">
-          <rect x="12" y="10" width="40" height="46" rx="2" fill="#fff" stroke="#1b1b1b" stroke-width="2"/>
-          <rect x="22" y="6" width="20" height="10" rx="2" fill="#d7d7d7" stroke="#1b1b1b" stroke-width="2"/>
-          <path d="M20 22 H44 M20 30 H44 M20 38 H44" stroke="#3a3a3a" stroke-width="2"/>
-          <path d="M20 46 h10" stroke="#f04b3a" stroke-width="3"/>
-          <path d="M34 46 h10" stroke="#2e9b2e" stroke-width="3"/>
-        </svg>`
-    },
-    risk: {
-      title: "Riskanalys",
-      html: `
-        <ul>
-          <li>Tas fram av erfarna ingenjörer.</li>
-          <li>Anpassas för sprängning och andra markarbeten.</li>
-          <li>Snabb leverans – tydliga åtgärdsförslag.</li>
-        </ul>`,
-      icon: `
-        <svg viewBox="0 0 64 64" width="90" height="90">
-          <path d="M32 6 L60 54 H4 Z" fill="#ffe000" stroke="#1b1b1b" stroke-width="3"/>
-          <rect x="29.5" y="22" width="5" height="16" fill="#1b1b1b"/>
-          <rect x="29.5" y="42" width="5" height="5" fill="#1b1b1b"/>
-        </svg>`
-    }
-  };
+<!-- Varför -->
+<section class="section alt">
+  <div class="container">
+    <h2 class="h2">Varför välja oss</h2>
+    <div class="grid-3">
+      <div class="tile"><h3 class="h3">Snabb start</h3><p class="muted">Vi kommer igång snabbt och levererar mätning & besiktning utan onödiga väntetider.</p></div>
+      <div class="tile"><h3 class="h3">Tydliga rapporter</h3><p class="muted">Enkla och begripliga rapporter per mätare och dygn – redo för beställare och myndighet.</p></div>
+      <div class="tile"><h3 class="h3">Svensk standard</h3><p class="muted">Allt utförs enligt Svensk Standard & AMA. Larm via SMS/mejl när riktvärden överskrids.</p></div>
+    </div>
+  </div>
+</section>
 
-  const cards = document.getElementById('cards');
-  const detail = document.getElementById('detail');
-  const detailTitle = document.getElementById('detail-title');
-  const detailIcon = document.getElementById('detail-icon');
-  const detailText = document.getElementById('detail-text');
-  const backBtn = document.getElementById('backBtn');
+<!-- Kontakt -->
+<section id="kontakt" class="section">
+  <div class="container">
+    <h2 class="h2">Kontakta oss</h2>
 
-  // Öppna detalj
-  cards.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.svc');
-    if(!btn) return;
-    const key = btn.dataset.key;
-    const d = DATA[key];
-    if(!d) return;
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <img class="contact-photo" src="assets/profil.jpg" alt="Henrik Olof Olsson, ProTech Consult AB">
+        <div>
+          <strong>Henrik Olof Olsson</strong><br>
+          ProTech Consult AB<br>
+          E-post: <a href="mailto:henrik.olof.olsson@protechconsult.se">henrik.olof.olsson@protechconsult.se</a><br>
+          Tel: <a href="tel:+46708856579">070-885 55 79</a>
+        </div>
+      </div>
 
-    detailTitle.textContent = d.title;
-    detailIcon.innerHTML = d.icon;
-    detailText.innerHTML = d.html;
+      <!-- Formulär -->
+      <form class="form" action="https://formsubmit.co/henrik.olof.olsson@protechconsult.se" method="POST">
+        <input type="hidden" name="_subject" value="Förfrågan via vibrationskontroll.se">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="./#tack">
+        <label>Namn</label>
+        <input required name="namn" placeholder="Ditt namn">
+        <label>E-post</label>
+        <input required type="email" name="email" placeholder="namn@företag.se">
+        <label>Telefon</label>
+        <input name="telefon" placeholder="070-xxx xx xx">
+        <label>Meddelande</label>
+        <textarea required name="meddelande" rows="5" placeholder="Kort om plats, antal mätare & tidsperiod..."></textarea>
+        <button class="btn btn-primary" type="submit">Skicka förfrågan</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    // Göm korten och visa faktarutan
-    cards.style.display = 'none';
-    detail.style.display = 'block';
-    detail.setAttribute('aria-hidden','false');
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img class="footer-logo" src="assets/logo.png" alt="ProTech Consult AB">
+    <div>© 2025 ProTech Consult AB – Omgivningskontroller i hela Sverige</div>
+  </div>
+</footer>
 
-    // Sätt fokus för mobil/tangent
-    detail.querySelector('.btn').focus({preventScroll:false});
-  });
-
-  // Tillbaka till korten
-  backBtn.addEventListener('click', ()=>{
-    detail.style.display = 'none';
-    detail.setAttribute('aria-hidden','true');
-    cards.style.display = 'grid';
-    // Flytta fokus tillbaka till första kortet
-    const first = cards.querySelector('.svc');
-    if(first){ first.focus({preventScroll:false}); }
-  });
-</script>
 </body>
 </html>
